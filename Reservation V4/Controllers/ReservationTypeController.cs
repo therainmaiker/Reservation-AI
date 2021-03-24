@@ -26,6 +26,7 @@ namespace Reservation_V4.Controllers
 
         // GET: ReservationTypeController
         
+       [Authorize(Roles = "Admin")]
         public async Task<ActionResult>  Index()
         {
             var allTypes = await _context.ReservationTypes.ToListAsync();

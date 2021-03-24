@@ -93,28 +93,13 @@ namespace Reservation_V4.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Reservation reservation)
         {
-            //  var query = _context.Reservations.FromSqlRaw("INSERT INTO reservations (ID,Date,Status,Cause,ReservationTypeId, UserId,ReservationId)VALUES(10, '2021-03-12 12:05:00.000000', 'Status', 'Cause', 2, '1c53fef4-2a86-4257-9f3b-ff08c06ef66a', 3)");
-
+          
             //// get all users infos
             var userID = await _userManager.GetUserAsync(User);
-            //var ResType = _context.ReservationTypes.SingleAsync(x => x.Id == reservation.);
-            
-            // set Default status  to pending 
             reservation.Status = ContactStatus.Pending;
 
             reservation.UserId = userID.Id;
-
-            //reservation.ReservationTypeId =ResType ;
-            //reservation.ReservationTypeId = reservation.ReservationTypeId;
-
-            //var reserve = new Reservation();
-            //reserve.Date = reservation.Date;
-            //reserve.Cause = reservation.Cause;
-            //reserve.Status = reservation.Status;
-            //reserve.ReservationTypeId = reservation.ReservationTypeId;
-
-            //reserve.UserId = userID.Id;
-
+            
             await _context.AddAsync(reservation);
 
             await _context.SaveChangesAsync();
