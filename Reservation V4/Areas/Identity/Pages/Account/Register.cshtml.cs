@@ -68,8 +68,11 @@ namespace Reservation_V4.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "LastName")]
             public string LastName { get; set; }
+
+            [Required]
             
-            
+            public string PhoneNumber { get; set; }
+
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -84,7 +87,7 @@ namespace Reservation_V4.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new Student { UserName = Input.Email, Email = Input.Email , FirstName = Input.FirstName , LastName = Input.LastName};
+                var user = new Student { UserName = Input.Email, Email = Input.Email , FirstName = Input.FirstName , LastName = Input.LastName , PhoneNumber = Input.PhoneNumber};
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

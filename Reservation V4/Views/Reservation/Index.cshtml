@@ -8,11 +8,12 @@
 
 }
 
+    
 <p  class="text-center pt-5" >
     <a class="btn btn-warning align-self-center" asp-action="Create">Submit Reservation</a>
 </p>
 <table class="table">
-    <thead  class="table-success">
+    <thead  class="table">
     <tr>
      
         <th>
@@ -40,8 +41,18 @@
     </thead>
 
     <tbody>
+        <div class="d-flex" >
+         <form action="/Reservation" method="post">
+            <input type="date" name="FilterDate">
+            <input type="submit" value="↵">
+         <input name="__RequestVerificationToken" type="hidden" value="CfDJ8FD5s-aCWgNEm17Nhsw7byDJWdSX4NOsq7IifVPA9ALPG3t_7Wim-uvJXVO03GZxqwW9ry5cZJ-7ykj-_-OVTuyAJnKhdd2Hg7p7TQ_fyEveSKGHbTrMsmbpaS6p5Gh-hDodlBj9OjGkZrQ5Iq4NS4v3XuB3RPhJh55MT_v22rJ_ifptl8AIiNtGTE4PCI5qMw"></form>
+         <a class="btn btn-danger" href="/Reservation">✘</a>
+            
+     </div>
 @foreach (var item in Model) {
-        <tr class="table-dark">
+        <tr class="table-primary">
+
+
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>

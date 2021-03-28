@@ -39,7 +39,17 @@ namespace Reservation_V4.Controllers
 
             return View(jointuretables.OrderByDescending(c => c.Date));
         }
+[Route("/Reservation")]
+[HttpPost]
+public async Task<IActionResult> FilterByDate(DateTime FilterDate){
+    if(FilterDate.Year <=0001) return RedirectToAction(nameof(Index));
+    var list =await _context.Reservations
+    .Include(r=>r.User)
+    .Where(r=>r.Date == FilterDate)
+    .ToListAsync();
 
+    return View("Index",list);
+}
         //[Authorize(Roles = "Admin")]
         //public async Task<ActionResult> Index()
         //{
@@ -79,7 +89,7 @@ namespace Reservation_V4.Controllers
 
         public ActionResult Create(ContactStatus status)
         {
-            var filterby = _context.Reservations.OrderBy(r => r.Date);
+          //  var filterby = _context.Reservations.OrderBy(r => r.Date);
 
             List<ReservationType> reservationTypes = _context.ReservationTypes.ToList();
             ViewBag.reservatiolist = new SelectList(reservationTypes, "Id", "ReservationName");

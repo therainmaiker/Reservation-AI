@@ -1,0 +1,36 @@
+﻿@model List<EditUsersRole>
+@{
+    ViewData["Title"] = "EditUsersRole";
+
+}
+<form method="post">
+    <div class="my-5">
+        <div class="card">
+            <div class="card-header">
+                <span>Add or Remove Users from this Role</span>
+                <hr />
+                <input disabled value="ID : @ViewBag.RoleId" class="form-control" />
+            </div>
+            <div class="card-body">
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    var uniqueName = "User" + i;
+                    <div class="form-check m-1">
+                        <input hidden asp-for="@Model[i].UserName" />
+                        <input hidden asp-for="@Model[i].UserName" />
+                        <input asp-for="@Model[i].IsSelected" id="@uniqueName" class="form-check-input" />
+                        <label for="@uniqueName" class="form-check-label">@Model[i].UserName.ToUpper()</label>
+                    </div>}
+
+            </div>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success">Save</button>
+                <a asp-action="EditRole" asp-route-id="@ViewBag.RoleId" class="btn btn-secondary mx-2">Back</a>
+
+
+
+            </div>
+        </div>
+    </div>
+</form>

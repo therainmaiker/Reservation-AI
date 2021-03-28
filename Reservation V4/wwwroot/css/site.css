@@ -6,7 +6,10 @@ a.navbar-brand {
   text-align: center;
   word-break: break-all;
 }
-
+.anahada {
+    margin-top: 5%;
+    padding-bottom: 1rem!important;
+}
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;

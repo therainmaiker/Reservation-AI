@@ -19,6 +19,7 @@ namespace Reservation_V4.Data
         public DbSet<Student> students { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<ReservationType> ReservationTypes { get; set; }
+       
         
 
     }
