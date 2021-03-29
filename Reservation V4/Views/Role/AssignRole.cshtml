@@ -15,18 +15,18 @@
 
 
 
-<div class="container">
-    <div class="row" style="background-color:#137771;">
+<div class="container text-center">
+    <div class="row" >
 
        
 
-        <div class=" card-body  col-6 offset-3">
+        <div class=" card-body  col-6 ">
             <form asp-action="AssignRole" asp-controller="Role" method="post">
                 <div class="form-group">
-                     <h3 class="text-capitalize font-weight-bolder btn-danger text-center ">Add User To Role</h3>
+                     <h3 class="text-capitalize font-weight-bolder  text-center ">Add User To Role</h3>
                     <label>Select UserName</label>
                     <select asp-for="Id" asp-items="@ViewBag.getusers" class="form-control">
-                        <option selected disabled>--Select User--</option>
+                        <option  selected disabled>--Select User--</option>
 
                     </select>
                 </div>
@@ -34,7 +34,8 @@
                 <div class="form-group">
                     <label>Select Role Name</label>
                     <select asp-for="Name" asp-items="@ViewBag.getroles" class="form-control">
-                        <option selected disabled>--Select Role</option>
+                        <option selected disabled>--Select Role--</option>
+
                     </select>
                 </div>
 
